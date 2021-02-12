@@ -30,7 +30,7 @@ const Menu = () => {
       </MenuWrapper.CenterSide>
       <MenuWrapper.RigthSide>
         <button>Entrar</button>
-        <button>Cadastrar-se</button>
+        <button>Cadastrar</button>
       </MenuWrapper.RigthSide>
     </MenuWrapper>
   );
