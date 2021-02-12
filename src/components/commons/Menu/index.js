@@ -28,7 +28,7 @@ const Menu = () => {
           );
         })}
       </MenuWrapper.CenterSide>
-      <MenuWrapper.RigthSide>Buttons area</MenuWrapper.RigthSide>
+      <MenuWrapper.RigthSide>Buttons</MenuWrapper.RigthSide>
     </MenuWrapper>
   );
 };
