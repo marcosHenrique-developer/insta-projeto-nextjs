@@ -28,7 +28,10 @@ const Menu = () => {
           );
         })}
       </MenuWrapper.CenterSide>
-      <MenuWrapper.RigthSide>Buttons</MenuWrapper.RigthSide>
+      <MenuWrapper.RigthSide>
+        <button>Entrar</button>
+        <button>Cadastrar-se</button>
+      </MenuWrapper.RigthSide>
     </MenuWrapper>
   );
 };
