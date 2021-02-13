@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from '../Button';
+import { Logo } from '../theme/Logo';
 import { MenuWrapper } from './styles/MenuWrapper';
 
 const Menu = () => {
@@ -18,7 +20,9 @@ const Menu = () => {
   ];
   return (
     <MenuWrapper>
-      <MenuWrapper.LeftSide>Logo esquerda</MenuWrapper.LeftSide>
+      <MenuWrapper.LeftSide>
+        <Logo />
+      </MenuWrapper.LeftSide>
       <MenuWrapper.CenterSide>
         {links.map((item, i) => {
           return (
@@ -29,8 +33,10 @@ const Menu = () => {
         })}
       </MenuWrapper.CenterSide>
       <MenuWrapper.RigthSide>
-        <button>Entrar</button>
-        <button>Cadastrar</button>
+        <Button ghost variant="secondary.main">
+          Entrar
+        </Button>
+        <Button variant="primary.main">Cadastrar</Button>
       </MenuWrapper.RigthSide>
     </MenuWrapper>
   );
