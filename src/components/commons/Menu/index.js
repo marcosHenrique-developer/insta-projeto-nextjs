@@ -1,4 +1,5 @@
 import React from 'react';
+import Text from '../../foundation/Text';
 import Button from '../Button';
 import { Logo } from '../theme/Logo';
 import { MenuWrapper } from './styles/MenuWrapper';
@@ -27,7 +28,9 @@ const Menu = () => {
         {links.map((item, i) => {
           return (
             <li key={i}>
-              <a href={item.url}>{item.text}</a>
+              <Text tag="a" variant="smallestException" href={item.url}>
+                {item.text}
+              </Text>
             </li>
           );
         })}
