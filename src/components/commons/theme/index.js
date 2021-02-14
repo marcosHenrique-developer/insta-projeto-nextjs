@@ -40,10 +40,17 @@ const colors = {
     dark: {},
   },
 };
-
+export const breakpoints = {
+  xs: 0,
+  sm: 480,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+};
 export default {
   colors,
   typographyVariants,
+  breakpoints,
   borderRadius: '8px',
   fontFamily: "'Rubik', sans-serif",
   transition: '200ms ease-in-out',
