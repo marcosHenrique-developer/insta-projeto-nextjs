@@ -3,6 +3,7 @@ import { breakpoints } from '../index';
 
 export function breakpointsMedia(cssByBreakpoint) {
   const breakpointNames = Object.keys(breakpoints);
+
   return breakpointNames
     .filter((breakpointName) => Boolean(cssByBreakpoint[breakpointName]))
     .map(

@@ -27,7 +27,6 @@ export function propToStyle(propName) {
       `;
     }
 
-    // console.log([propName]);
     return {
       [propName]: props[propName],
     };
