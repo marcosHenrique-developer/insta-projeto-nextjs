@@ -48,7 +48,7 @@ function ModalLogin({ isOpen, onClose, children }) {
             x: 0,
           },
           closed: {
-            x: '-100%',
+            x: '100%',
           },
         }}
         animate={isOpen ? 'open' : 'closed'}
