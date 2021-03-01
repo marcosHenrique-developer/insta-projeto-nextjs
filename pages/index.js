@@ -4,8 +4,11 @@ import Text from '../src/components/foundation/Text';
 import Button from '../src/components/commons/Button';
 import { Grid } from '../src/components/layout/Grid';
 import { Box } from '../src/components/layout/Box';
+import ModalLogin from '../src/components/commons/Modal';
 
 export default function Home() {
+  const [modalOpen, setModalOpen] = React.useState(false);
+
   return (
     <Box
       flex="1"
@@ -17,6 +20,18 @@ export default function Home() {
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
+      <ModalLogin
+        isOpen={modalOpen}
+        onClose={() => {
+          setModalOpen(false);
+        }}
+      >
+        {(props) => (
+          <Box backgroundColor="white" {...props}>
+            <div>Modal de entrar</div>
+          </Box>
+        )}
+      </ModalLogin>
       <Menu />
 
       <Grid.Container
@@ -66,6 +81,9 @@ export default function Home() {
                 md: 'initial',
               }}
               display="block"
+              onClick={() => {
+                setModalOpen(!modalOpen);
+              }}
             >
               Cadastrar
             </Button>
