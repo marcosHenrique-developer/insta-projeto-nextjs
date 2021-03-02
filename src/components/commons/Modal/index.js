@@ -2,6 +2,7 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import styled, { createGlobalStyle, css } from 'styled-components';
 import { motion } from 'framer-motion';
+import { Box } from '../../layout/Box';
 
 const ModalContainer = styled.div`
   display: flex;
@@ -37,6 +38,23 @@ const LockScroll = createGlobalStyle`
 `;
 
 function ModalLogin({ isOpen, onClose, children }) {
+  const CloseModal = () => (
+    <Box
+      position="absolute"
+      top={{
+        xs: '30px',
+        md: '20px',
+      }}
+      right={{
+        xs: '40px',
+        md: '30px',
+      }}
+      onClick={() => onClose()}
+      cursor="pointer"
+    >
+      <img src="/images/close.svg" alt="Fechar" />
+    </Box>
+  );
   return (
     <ModalContainer
       isOpen={isOpen}
@@ -68,6 +86,7 @@ function ModalLogin({ isOpen, onClose, children }) {
       >
         {children({
           'data-modal-safe-area': 'true',
+          CloseModal,
         })}
       </motion.div>
     </ModalContainer>

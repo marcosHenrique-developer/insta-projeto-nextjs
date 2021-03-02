@@ -87,6 +87,8 @@ const Col = styled.div`
     ${propToStyle('justifyContent')}
     ${propToStyle('flexDirection')}
     ${propToStyle('paddingRight')}
+    ${propToStyle('backgroundImage')}
+    ${propToStyle('backgroundRepeat')}
 `;
 
 Col.defaultProps = {
