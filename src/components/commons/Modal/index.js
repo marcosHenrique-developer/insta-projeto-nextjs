@@ -1,6 +1,6 @@
 import React from 'react';
 import Proptypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
 import { motion } from 'framer-motion';
 
 const ModalContainer = styled.div`
@@ -30,6 +30,11 @@ const ModalContainer = styled.div`
     `;
   }}
 `;
+const LockScroll = createGlobalStyle`
+  body {
+    overflow: hidden;
+  }
+`;
 
 function ModalLogin({ isOpen, onClose, children }) {
   return (
@@ -42,6 +47,7 @@ function ModalLogin({ isOpen, onClose, children }) {
         }
       }}
     >
+      {isOpen && <LockScroll />}
       <motion.div
         variants={{
           open: {

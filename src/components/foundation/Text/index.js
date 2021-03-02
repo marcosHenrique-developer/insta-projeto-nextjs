@@ -56,10 +56,11 @@ export default function Text({ variant, children, tag, ...props }) {
 Text.defaultProps = {
   tag: 'span',
   variant: 'paragraph1',
+  children: null,
 };
 
 Text.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   tag: PropTypes.PropTypes.string.isRequired,
   variant: PropTypes.PropTypes.string.isRequired,
 };

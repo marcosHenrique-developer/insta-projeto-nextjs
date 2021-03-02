@@ -31,6 +31,15 @@ const Button = styled.button`
       ${TextStyleVariants.paragraph1}
     `,
   })}
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.2;
+  }
+  ${({ fullWidth }) =>
+    fullWidth &&
+    css`
+      width: 100%;
+    `};
   ${propToStyle('margin')}
   ${propToStyle('display')}
 

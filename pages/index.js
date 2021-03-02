@@ -5,6 +5,7 @@ import Button from '../src/components/commons/Button';
 import { Grid } from '../src/components/layout/Grid';
 import { Box } from '../src/components/layout/Box';
 import ModalLogin from '../src/components/commons/Modal';
+import FormCadastro from '../src/components/forms/FormCadastro';
 
 export default function Home() {
   const [modalOpen, setModalOpen] = React.useState(false);
@@ -26,11 +27,7 @@ export default function Home() {
           setModalOpen(false);
         }}
       >
-        {(props) => (
-          <Box backgroundColor="white" {...props}>
-            <div>Modal de entrar</div>
-          </Box>
-        )}
+        {(props) => <FormCadastro props={props} />}
       </ModalLogin>
       <Menu />
 
