@@ -1,6 +1,8 @@
 import { breakpointsMedia } from './breakpointMedia';
 
+// eslint-disable-next-line import/prefer-default-export
 export function propToStyle(propName) {
+  // eslint-disable-next-line consistent-return
   return (props) => {
     const propValue = props[propName];
 

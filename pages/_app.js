@@ -1,10 +1,14 @@
+/* eslint-disable react/jsx-props-no-spreading */
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import Head from 'next/head';
 import theme from '../src/components/commons/theme';
 import GlobalStyle from '../src/components/commons/theme/GlobalStyle';
-import Head from 'next/head';
 
+// eslint-disable-next-line react/prop-types
 export default function App({ Component, pageProps }) {
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <>
       <Head>
         <title>Insta</title>

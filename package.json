@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@crello/react-lottie": "0.0.11",
     "framer-motion": "^3.9.0",
     "lodash": "^4.17.20",
     "next": "latest",
@@ -15,11 +16,19 @@
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-is": "^16.8.0",
+    "react-lottie": "^1.2.3",
+    "shelljs": "^0.8.4",
     "styled-components": "^5.0.0",
     "styled-normalize": "^8.0.7"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.8.0"
+    "babel-plugin-styled-components": "^1.8.0",
+    "eslint": "^7.21.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0"
   },
   "license": "MIT"
 }

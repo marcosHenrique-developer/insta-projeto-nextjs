@@ -1,14 +1,32 @@
 import React from 'react';
+import { Lottie } from '@crello/react-lottie';
+
 import Button from '../../commons/Button';
-import TextField from '../../forms/TextField';
+import TextField from '../TextField';
 import Text from '../../foundation/Text';
 import { Box } from '../../layout/Box';
 import { Grid } from '../../layout/Grid';
 
+import errorAnimation from './animations/errorAnimation.json';
+import loadingAnimation from './animations/loadingAnimation.json';
+import sucessAnimation from './animations/sucessAnimation.json';
+
+const formStates = {
+  DEFAULT: 'DEFAULT',
+  LOADING: 'LOADING',
+  DONE: 'DONE',
+  ERROR: 'ERROR',
+};
+
 function FormContent() {
+  const [isFormSubmited, setIsFormSubmited] = React.useState(false);
+  const [submissionStatus, setSubmissionStatus] = React.useState(
+    formStates.DEFAULT,
+  );
+
   const [userInfo, setUserInfo] = React.useState({
-    usuario: '',
-    email: '',
+    user: '',
+    nome: '',
   });
 
   function handleChange(event) {
@@ -19,16 +37,57 @@ function FormContent() {
     });
   }
 
+  // eslint-disable-next-line operator-linebreak
   const isFormInvalid =
-    userInfo.usuario.length === 0 || userInfo.email.length === 0;
+    userInfo.user.length === 0 || userInfo.nome.length === 0;
 
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        console.log(
-          'O formulário ta pronto, vamos cadastrar de fato o usuario',
-        );
+        setIsFormSubmited(true);
+        const userDTO = {
+          username: userInfo.user,
+          name: userInfo.nome,
+        };
+        setSubmissionStatus(formStates.LOADING);
+        setTimeout(() => {
+          fetch('https://instalura-api.vercel.app/api/users', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userDTO),
+          })
+            .then((response) => {
+              if (response.ok) {
+                return response.json();
+              }
+              throw new Error(
+                'Não foi possível cadastrar, Provavelmente o nome e usuario ja existem',
+              );
+            })
+            .then((objectResponse) => {
+              setSubmissionStatus(formStates.DONE);
+              // eslint-disable-next-line no-console
+              console.log(objectResponse);
+            })
+            .catch((err) => {
+              setSubmissionStatus(formStates.ERROR);
+              // eslint-disable-next-line no-console
+              console.log(err);
+            })
+            .finally(() => {
+              setTimeout(() => {
+                setIsFormSubmited(false);
+                setUserInfo({
+                  user: '',
+                  nome: '',
+                });
+              }, 2500);
+            });
+        }, 1000);
       }}
     >
       <Text variant="title" tag="h1" color="tertiary.main">
@@ -46,9 +105,9 @@ function FormContent() {
 
       <div>
         <TextField
-          placeholder="Email"
-          name="email"
-          value={userInfo.email}
+          placeholder="Nome"
+          name="nome"
+          value={userInfo.nome}
           onChange={handleChange} // capturadores, pegadores de ação
         />
       </div>
@@ -56,8 +115,8 @@ function FormContent() {
       <div>
         <TextField
           placeholder="Usuário"
-          name="usuario"
-          value={userInfo.usuario}
+          name="user"
+          value={userInfo.user}
           onChange={handleChange}
         />
       </div>
@@ -70,6 +129,46 @@ function FormContent() {
       >
         Cadastrar
       </Button>
+
+      {isFormSubmited && submissionStatus === formStates.DONE && (
+        <Box display="flex" justifyContent="center">
+          <Lottie
+            width="150px"
+            height="150px"
+            config={{
+              animationData: sucessAnimation,
+              loop: true,
+              autoplay: true,
+            }}
+          />
+        </Box>
+      )}
+      {isFormSubmited && submissionStatus === formStates.LOADING && (
+        <Box display="flex" justifyContent="center">
+          <Lottie
+            width="150px"
+            height="150px"
+            config={{
+              animationData: loadingAnimation,
+              loop: true,
+              autoplay: true,
+            }}
+          />
+        </Box>
+      )}
+      {isFormSubmited && submissionStatus === formStates.ERROR && (
+        <Box display="flex" justifyContent="center">
+          <Lottie
+            width="150px"
+            height="150px"
+            config={{
+              animationData: errorAnimation,
+              loop: true,
+              autoplay: true,
+            }}
+          />
+        </Box>
+      )}
     </form>
   );
 }
@@ -98,7 +197,7 @@ export default function FormCadastro({ props }) {
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...props}
         >
-          <props.CloseModal />
+          <props.m />
           <FormContent />
         </Box>
       </Grid.Col>

@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 import { breakpoints } from '../index';
 
+// eslint-disable-next-line import/prefer-default-export
 export function breakpointsMedia(cssByBreakpoint) {
   const breakpointNames = Object.keys(breakpoints);
 

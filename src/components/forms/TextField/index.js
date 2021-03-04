@@ -20,8 +20,15 @@ Input.defaultProps = {
   variant: 'paragraph1',
 };
 
-export default function TextField({ placeholder, name, onChange, value }) {
+export default function TextField({
+  // eslint-disable-next-line object-curly-newline
+  placeholder,
+  name,
+  onChange,
+  value,
+}) {
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <InputWrapper>
       <Input
         type="text"

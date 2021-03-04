@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { propToStyle } from '../../commons/theme/utils/propStyle';
 
+// eslint-disable-next-line import/prefer-default-export
 export const Box = styled.div`
   ${propToStyle('flex')}
   ${propToStyle('display')}

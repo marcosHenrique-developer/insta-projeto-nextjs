@@ -39,6 +39,7 @@ const LockScroll = createGlobalStyle`
 
 function ModalLogin({ isOpen, onClose, children }) {
   const CloseModal = () => (
+    // eslint-disable-next-line react/jsx-filename-extension
     <Box
       position="absolute"
       top={{

@@ -1,3 +1,8 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/default-props-match-prop-types */
+/* eslint-disable indent */
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import styled, { css } from 'styled-components';
 import get from 'lodash/get';
@@ -45,6 +50,7 @@ const TextBase = styled.span`
   color: ${({ theme, color }) => get(theme, `colors.${color}.color`)};
   ${propToStyle('textAlign')};
 `;
+// eslint-disable-next-line object-curly-newline
 export default function Text({ variant, children, tag, ...props }) {
   return (
     <TextBase as={tag} variant={variant} {...props}>
@@ -61,6 +67,8 @@ Text.defaultProps = {
 
 Text.propTypes = {
   children: PropTypes.node,
+
   tag: PropTypes.PropTypes.string.isRequired,
+
   variant: PropTypes.PropTypes.string.isRequired,
 };

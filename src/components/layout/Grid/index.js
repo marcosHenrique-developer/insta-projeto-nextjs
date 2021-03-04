@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import styled, { css } from 'styled-components';
 import { breakpointsMedia } from '../../commons/theme/utils/breakpointMedia';
 import { propToStyle } from '../../commons/theme/utils/propStyle';
@@ -96,6 +97,7 @@ Col.defaultProps = {
   offset: {},
 };
 
+// eslint-disable-next-line import/prefer-default-export
 export const Grid = {
   Container: styled.div`
     width: 100%;

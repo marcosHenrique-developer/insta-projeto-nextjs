@@ -1,7 +1,9 @@
 import React from 'react';
 
+// eslint-disable-next-line import/prefer-default-export
 export function Logo() {
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <svg
       width="96"
       height="24"
