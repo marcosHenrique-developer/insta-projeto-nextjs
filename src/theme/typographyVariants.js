@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/prefer-default-export
-export const typographyVariants = {
+const typographyVariants = {
   // [title]
   title: {
     fontSize: '32px',
@@ -36,3 +35,5 @@ export const typographyVariants = {
     lineHeight: 1, // 100%
   },
 };
+
+export default typographyVariants;

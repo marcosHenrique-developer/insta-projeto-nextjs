@@ -1,11 +1,9 @@
-/* eslint-disable indent */
 import styled, { css } from 'styled-components';
-import { breakpointsMedia } from '../../theme/utils/breakpointMedia';
-import { TextStyleVariants } from '../../../foundation/Text/index';
+import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
+import { TextStyleVariantsMap } from '../../foundation/Text';
 
-// eslint-disable-next-line import/prefer-default-export
 export const MenuWrapper = styled.nav`
-  font-family: 'Rubik', sans-serif;
+  /* font-family: 'Rubik', sans-serif; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,6 +11,7 @@ export const MenuWrapper = styled.nav`
   margin-top: 18px;
   padding-left: 28px;
   padding-right: 28px;
+
   ${breakpointsMedia({
     md: css`
       justify-content: flex-start;
@@ -31,72 +30,84 @@ export const MenuWrapper = styled.nav`
     `,
   })}
 `;
+
 MenuWrapper.LeftSide = styled.div`
-  padding: 0;
-  margin: 0;
+  /* padding: 0;
+  margin: 0; */
   order: 1;
-  ${breakpointsMedia({
-    md: css`
-      width: 131px;
-      height: 32px;
-    `,
-  })}
+
   ${breakpointsMedia({
     md: css`
       order: initial;
-      padding-right: 16px;
+      padding-right: 40px;
+      margin-bottom: 5px;
     `,
   })}
+
+  > svg {
+    width: 96px;
+    height: 24px;
+
+    ${breakpointsMedia({
+      md: css`
+        width: 131px;
+        height: 32px;
+      `,
+    })}
+  }
 `;
-MenuWrapper.CenterSide = styled.div`
-  padding: 0;
-  margin: 0;
+
+MenuWrapper.CentralSide = styled.ul`
+  /* padding: 0;
+  margin: 0; */
   order: 3;
   width: 100%;
   list-style: none;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
   margin-top: 17px;
+  margin-bottom: 0;
   border-top: 1px solid #88989e;
   border-bottom: 1px solid #88989e;
   padding: 12px;
   ${breakpointsMedia({
     md: css`
       max-width: 332px;
-      justify-content: space-between;
+      padding: 0 12px;
       flex: 1;
       order: initial;
       border: none;
-      margin: 0;
-      padding-top: 0;
-      padding-bottom: 0;
+      margin: 0%;
     `,
   })}
+
   a {
-    text-align: center;
-    display: block;
+    /* text-align: center; */
+    /* display: block; */
     text-decoration: none;
     color: #88989e;
     transition: 200ms ease-in-out;
+
     ${breakpointsMedia({
       xs: css`
-        ${TextStyleVariants.smallestException}
+        ${TextStyleVariantsMap.smallestException}
       `,
+
       md: css`
-        ${TextStyleVariants.paragraph1}
+        ${TextStyleVariantsMap.paragraph1}
       `,
     })}
-    &:hover,
-    &:focus {
+
+    &:hover, &:focus {
       font-weight: 500;
       color: #070c0e;
     }
   }
 `;
-MenuWrapper.RigthSide = styled.div`
-  padding: 0;
-  margin: 0;
+MenuWrapper.RightSide = styled.div`
+  /* padding: 0;
+  margin: 0; */
   display: flex;
   flex: 1;
   order: 2;

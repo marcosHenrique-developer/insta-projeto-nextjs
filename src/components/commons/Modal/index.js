@@ -1,50 +1,17 @@
 import React from 'react';
-import Proptypes from 'prop-types';
-import styled, { createGlobalStyle, css } from 'styled-components';
+import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import { Box } from '../../layout/Box';
+import { ModalWrapper } from './styles';
+import { Box } from '../../foundation/layout/Box';
 
-const ModalContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  background: rgba(0, 0, 0, 0.1);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  overflow: scroll;
-  transition: 0.3s;
-  z-index: 100;
-  ${({ isOpen }) => {
-    if (isOpen) {
-      return css`
-        opacity: 1;
-        pointer-events: all;
-      `;
-    }
-    return css`
-      opacity: 0;
-      pointer-events: none;
-    `;
-  }}
-`;
-const LockScroll = createGlobalStyle`
-  body {
-    overflow: hidden;
-  }
-`;
-
-function ModalLogin({ isOpen, onClose, children }) {
-  const CloseModal = () => (
+const Modal = ({ isOpen, onClose, children }) => {
+  const CloseButton = () => (
     // eslint-disable-next-line react/jsx-filename-extension
     <Box
       position="absolute"
       top={{
         xs: '30px',
-        md: '20px',
+        md: '30px',
       }}
       right={{
         xs: '40px',
@@ -53,20 +20,21 @@ function ModalLogin({ isOpen, onClose, children }) {
       onClick={() => onClose()}
       cursor="pointer"
     >
-      <img src="/images/close.svg" alt="Fechar" />
+      <img src="/images/closeButton.svg" alt="botoa de fechar" />
     </Box>
   );
+
   return (
-    <ModalContainer
+    <ModalWrapper
       isOpen={isOpen}
-      onClick={(event) => {
-        const safeArea = event.target.closest('[data-modal-safe-area="true"]');
-        if (!safeArea) {
+      onClick={(ev) => {
+        const isSafeArea = ev.target.closest('[data-modal-safe-area="true"]');
+        if (!isSafeArea) {
           onClose();
         }
       }}
     >
-      {isOpen && <LockScroll />}
+      {isOpen && <ModalWrapper.LockScroll />}
       <motion.div
         variants={{
           open: {
@@ -87,17 +55,17 @@ function ModalLogin({ isOpen, onClose, children }) {
       >
         {children({
           'data-modal-safe-area': 'true',
-          CloseModal,
+          CloseButton,
         })}
       </motion.div>
-    </ModalContainer>
+    </ModalWrapper>
   );
-}
-
-ModalLogin.propTypes = {
-  isOpen: Proptypes.bool.isRequired,
-  children: Proptypes.func.isRequired,
-  onClose: Proptypes.func.isRequired,
 };
 
-export default ModalLogin;
+Modal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  children: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
+
+export default Modal;

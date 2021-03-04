@@ -1,30 +1,26 @@
-/* eslint-disable react/require-default-props */
-/* eslint-disable react/default-props-match-prop-types */
-/* eslint-disable indent */
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import styled, { css } from 'styled-components';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
-import { propToStyle } from '../../commons/theme/utils/propStyle';
-import { breakpointsMedia } from '../../commons/theme/utils/breakpointMedia';
+import propToStyle from '../../../theme/utils/propToStyle';
+import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
 
 const paragraph1 = css`
-  ${({ theme }) => css`
-    font-size: ${theme.typographyVariants.paragraph1.fontSize};
-    font-weight: ${theme.typographyVariants.paragraph1.fontWeight};
-    line-height: ${theme.typographyVariants.paragraph1.lineHeight};
-  `}
+  font-size: ${({ theme }) => theme.typographyVariants.paragraph1.fontSize};
+  font-weight: ${({ theme }) => theme.typographyVariants.paragraph1.fontWeight};
+  line-height: ${({ theme }) => theme.typographyVariants.paragraph1.lineHeight};
 `;
+
 const smallestException = css`
-  ${({ theme }) => css`
-    font-size: ${theme.typographyVariants.smallestException.fontSize};
-    font-weight: ${theme.typographyVariants.smallestException.fontWeight};
-    line-height: ${theme.typographyVariants.smallestException.lineHeight};
-  `}
+  font-size: ${({ theme }) =>
+    theme.typographyVariants.smallestException.fontSize};
+  font-weight: ${({ theme }) =>
+    theme.typographyVariants.smallestException.fontWeight};
+  line-height: ${({ theme }) =>
+    theme.typographyVariants.smallestException.lineHeight};
 `;
-export const TextStyleVariants = {
+
+export const TextStyleVariantsMap = {
   smallestException,
   paragraph1,
   title: css`
@@ -46,18 +42,18 @@ export const TextStyleVariants = {
 };
 
 const TextBase = styled.span`
-  ${({ variant }) => TextStyleVariants[variant]}
+  ${(props) => TextStyleVariantsMap[props.variant]}
   color: ${({ theme, color }) => get(theme, `colors.${color}.color`)};
-  ${propToStyle('textAlign')};
+  ${propToStyle('textAlign')}
+  ${propToStyle('marginBottom')}
+  ${propToStyle('margin')}
 `;
-// eslint-disable-next-line object-curly-newline
-export default function Text({ variant, children, tag, ...props }) {
-  return (
-    <TextBase as={tag} variant={variant} {...props}>
-      {children}
-    </TextBase>
-  );
-}
+
+const Text = ({ tag, variant, children, ...props }) => (
+  <TextBase as={tag} variant={variant} {...props}>
+    {children}
+  </TextBase>
+);
 
 Text.defaultProps = {
   tag: 'span',
@@ -66,9 +62,21 @@ Text.defaultProps = {
 };
 
 Text.propTypes = {
+  tag: PropTypes.oneOf([
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'h5',
+    'h6',
+    'p',
+    'li',
+    'a',
+    'span',
+    'input',
+  ]),
   children: PropTypes.node,
-
-  tag: PropTypes.PropTypes.string.isRequired,
-
-  variant: PropTypes.PropTypes.string.isRequired,
+  variant: PropTypes.oneOf(['title', 'paragraph1', 'smallestException']),
 };
+
+export default Text;

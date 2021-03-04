@@ -1,66 +1,58 @@
-/* eslint-disable indent */
 import React from 'react';
-import FormCadastro from '../../forms/FormCadastro';
+import Logo from '../../../theme/Logo';
 import Text from '../../foundation/Text';
+import FormCadastro from '../../patterns/FormCadastro';
 import Button from '../Button';
-import ModalLogin from '../Modal';
-import { Logo } from '../theme/Logo';
-import { MenuWrapper } from './styles/MenuWrapper';
+import Modal from '../Modal';
+import { MenuWrapper } from './styles';
 
 const Menu = () => {
   const links = [
-    {
-      text: 'Home',
-      url: '/',
-    },
-    {
-      text: 'Perguntas',
-      url: '/perguntas',
-    },
-    {
-      text: 'Sobre',
-      url: '/sobre',
-    },
+    { text: 'Home', url: '/' },
+    { text: 'Perguntas', url: '/faq' },
+    { text: 'Sobre', url: '/sobre' },
   ];
-  const [modalOpen, setModalOpen] = React.useState(false);
+  const [isModalOpen, setModalState] = React.useState(false);
 
   return (
     // eslint-disable-next-line react/jsx-filename-extension
     <MenuWrapper>
-      <ModalLogin
-        isOpen={modalOpen}
+      <Modal
+        isOpen={isModalOpen}
         onClose={() => {
-          setModalOpen(false);
+          setModalState(false);
         }}
       >
         {(props) => <FormCadastro props={props} />}
-      </ModalLogin>
+      </Modal>
       <MenuWrapper.LeftSide>
         <Logo />
       </MenuWrapper.LeftSide>
-      <MenuWrapper.CenterSide>
-        {links.map((item) => (
-          <li key={item}>
-            <Text tag="a" variant="smallestException" href={item.url}>
-              {item.text}
+      <MenuWrapper.CentralSide>
+        {links.map((link, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <li key={`link__${index}`}>
+            <Text variant="smallestException" tag="a" href={link.url}>
+              {link.text}
             </Text>
           </li>
         ))}
-      </MenuWrapper.CenterSide>
-      <MenuWrapper.RigthSide>
+      </MenuWrapper.CentralSide>
+      <MenuWrapper.RightSide>
         <Button ghost variant="secondary.main">
           Entrar
         </Button>
         <Button
           variant="primary.main"
           onClick={() => {
-            setModalOpen(!modalOpen);
+            setModalState(!isModalOpen);
           }}
         >
           Cadastrar
         </Button>
-      </MenuWrapper.RigthSide>
+      </MenuWrapper.RightSide>
     </MenuWrapper>
   );
 };
+
 export default Menu;

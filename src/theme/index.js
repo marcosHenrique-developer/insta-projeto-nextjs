@@ -1,4 +1,5 @@
-import { typographyVariants } from './variantsTypography';
+import typographyVariants from './typographyVariants';
+import breakpoints from './breakpoints';
 
 const colors = {
   background: {
@@ -17,36 +18,30 @@ const colors = {
   primary: {
     main: {
       color: '#D7385E',
-      contrastText: '#fff',
+      contrastText: '#FFFFFF',
     },
   },
   secondary: {
     main: {
       color: '#FB7B6B',
-      contrastText: '#fff',
+      contrastText: '#FFFFFF',
     },
   },
   tertiary: {
     main: {
       color: '#070C0E',
-      contrastText: '#fff',
+      contrastText: '#FFFFFF',
     },
     light: {
       color: '#88989E',
-      contrastText: '#fff',
+      contrastText: '#FFFFFF',
     },
   },
   modes: {
     dark: {},
   },
 };
-export const breakpoints = {
-  xs: 0,
-  sm: 480,
-  md: 768,
-  lg: 992,
-  xl: 1200,
-};
+
 export default {
   colors,
   typographyVariants,
