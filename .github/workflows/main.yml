@@ -34,4 +34,4 @@ jobs:
       - name: Install Dependecies
         run: npm install
       - name: Check EsLint
-        run: npm run install
+        run: npm run lint
