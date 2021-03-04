@@ -1,5 +1,5 @@
 {
-  "name": "instalura-base",
+  "name": "insta-project",
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
@@ -36,7 +36,6 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "4.3.8",
     "prettier": "^2.2.1"
   },
   "license": "MIT",
