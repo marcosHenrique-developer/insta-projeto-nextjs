@@ -1,3 +1,7 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable object-curly-newline */
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable indent */
 import React from 'react';
 import styled, { css } from 'styled-components';
 import get from 'lodash/get';
@@ -50,6 +54,7 @@ const TextBase = styled.span`
 `;
 
 const Text = ({ tag, variant, children, ...props }) => (
+  // eslint-disable-next-line react/jsx-filename-extension
   <TextBase as={tag} variant={variant} {...props}>
     {children}
   </TextBase>

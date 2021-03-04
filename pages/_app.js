@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -8,6 +9,7 @@ import GlobalStyle from '../src/theme/GlobalStyle';
 
 export default function App({ Component, pageProps }) {
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <>
       <Head>
         <title>Instalura - Projeto Base</title>

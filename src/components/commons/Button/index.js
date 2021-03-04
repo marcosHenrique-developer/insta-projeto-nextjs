@@ -1,3 +1,4 @@
+/* eslint-disable implicit-arrow-linebreak */
 import styled, { css } from 'styled-components';
 import get from 'lodash/get';
 import { TextStyleVariantsMap } from '../../foundation/Text';
@@ -38,6 +39,7 @@ const Button = styled.button`
   }
 
   ${({ fullWidth }) =>
+    // eslint-disable-next-line operator-linebreak
     fullWidth &&
     css`
       width: 100%;
