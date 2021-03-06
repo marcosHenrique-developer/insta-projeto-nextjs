@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Logo = () => (
+  // eslint-disable-next-line react/jsx-filename-extension
   <svg
     width="131"
     height="32"

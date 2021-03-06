@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import styled from 'styled-components';
@@ -27,6 +28,7 @@ const FooterWrapper = styled.footer`
 
 export default function Footer(props) {
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <FooterWrapper {...props}>
       <a href="https://www.alura.com.br/">
         <img

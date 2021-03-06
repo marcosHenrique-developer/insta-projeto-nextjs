@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -22,6 +23,7 @@ Input.defaultProps = {
 
 export default function TextField({ placeholder, name, onChange, value }) {
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <InputWrapper>
       <Input
         type="text"
