@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable object-curly-newline */
 /* eslint-disable implicit-arrow-linebreak */
@@ -8,6 +9,7 @@ import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import propToStyle from '../../../theme/utils/propToStyle';
 import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
+import { Links } from '../../commons/Link';
 
 const paragraph1 = css`
   font-size: ${({ theme }) => theme.typographyVariants.paragraph1.fontSize};
@@ -53,35 +55,42 @@ const TextBase = styled.span`
   ${propToStyle('margin')}
 `;
 
-const Text = ({ tag, variant, children, ...props }) => (
-  // eslint-disable-next-line react/jsx-filename-extension
-  <TextBase as={tag} variant={variant} {...props}>
-    {children}
-  </TextBase>
-);
+export default function Text({ tag, href, variant, children, ...props }) {
+  if (href) {
+    return (
+      <TextBase
+        as={Links}
+        variant={variant}
+        href={href}
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        {...props}
+      >
+        {children}
+      </TextBase>
+    );
+  }
+
+  return (
+    <TextBase
+      as={tag}
+      variant={variant}
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      {...props}
+    >
+      {children}
+    </TextBase>
+  );
+}
+Text.propTypes = {
+  tag: PropTypes.string,
+  variant: PropTypes.string,
+  children: PropTypes.node,
+  href: PropTypes.string,
+};
 
 Text.defaultProps = {
   tag: 'span',
   variant: 'paragraph1',
   children: null,
+  href: '',
 };
-
-Text.propTypes = {
-  tag: PropTypes.oneOf([
-    'h1',
-    'h2',
-    'h3',
-    'h4',
-    'h5',
-    'h6',
-    'p',
-    'li',
-    'a',
-    'span',
-    'input',
-  ]),
-  children: PropTypes.node,
-  variant: PropTypes.oneOf(['title', 'paragraph1', 'smallestException']),
-};
-
-export default Text;
