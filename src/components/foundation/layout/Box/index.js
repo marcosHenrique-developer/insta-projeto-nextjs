@@ -21,4 +21,13 @@ export const Box = styled.div`
   ${propToStyle('cursor')}
   ${propToStyle('width')}
   ${propToStyle('height')}
+  ${propToStyle('listStyle')}
+  ${propToStyle('margin')}
+  ${propToStyle('marginLeft')}
+  ${propToStyle('marginTop')}
+  ${propToStyle('marginBottom')}
+  ${propToStyle('marginRight')}
+  ${({ theme, borderRadiusTheme }) =>
+    // eslint-disable-next-line implicit-arrow-linebreak
+    borderRadiusTheme && `border-radius: ${theme.borderRadius}`};
 `;
