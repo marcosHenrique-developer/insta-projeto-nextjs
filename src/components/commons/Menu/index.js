@@ -39,7 +39,7 @@ const Menu = () => {
         ))}
       </MenuWrapper.CentralSide>
       <MenuWrapper.RightSide>
-        <Button ghost variant="secondary.main">
+        <Button ghost variant="secondary.main" href="/login">
           Entrar
         </Button>
         <Button
