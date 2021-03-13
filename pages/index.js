@@ -1,40 +1,20 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
-
-import Menu from '../src/components/commons/Menu';
-import Footer from '../src/components/commons/Footer';
+import React from 'react';
 import Text from '../src/components/foundation/Text';
 import Button from '../src/components/commons/Button';
-import FormCadastro from '../src/components/patterns/FormCadastro';
 
 import { Grid } from '../src/components/foundation/layout/Grid';
 import { Box } from '../src/components/foundation/layout/Box';
-import Modal from '../src/components/commons/Modal';
-import { SEO } from '../src/components/commons/SEO';
+import { WebsitePageContext } from '../src/components/WebSitePageProvider';
+import websitePageHOC from '../src/components/WebSitePageProvider/hoc';
 
-export default function Home() {
-  const [isModalOpen, setModalState] = useState(false);
+function Home() {
+  const contextWebSite = React.useContext(WebsitePageContext);
 
   return (
     // eslint-disable-next-line react/jsx-filename-extension
-    <Box
-      flex="1"
-      display="flex"
-      flexWrap="wrap"
-      flexDirection="column"
-      justifyContent="space-between"
-      backgroundImage="url(/images/bubbles.svg)"
-      backgroundRepeat="no-repeat"
-      backgroundPosition="bottom right"
-    >
-      <SEO headTitle="Home" />
-      <Modal isOpen={isModalOpen} onClose={() => setModalState(false)}>
-        {(props) => <FormCadastro props={props} />}
-      </Modal>
-
-      <Menu />
-
+    <Box flex="1" display="flex">
       <Grid.Container
         marginTop={{
           xs: '32px',
@@ -82,7 +62,7 @@ export default function Home() {
                 md: 'initial',
               }}
               display="block"
-              onClick={() => setModalState(!isModalOpen)}
+              onClick={() => contextWebSite.toggleModalCadastro()}
             >
               Cadastrar
             </Button>
@@ -96,8 +76,19 @@ export default function Home() {
           </Grid.Col>
         </Grid.Row>
       </Grid.Container>
-
-      <Footer />
     </Box>
   );
 }
+
+export default websitePageHOC(Home, {
+  pageWrapperProps: {
+    seoProps: {
+      headTitle: 'Home',
+    },
+    pageBoxProps: {
+      backgroundImage: 'url(/images/bubbles.svg)',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'bottom right',
+    },
+  },
+});
