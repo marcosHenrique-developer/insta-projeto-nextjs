@@ -1,5 +1,5 @@
 import React from 'react';
-import websitePageHOC from '../src/components/WebSitePageProvider/hoc';
+import websitePageHOC from '../../src/components/WebSitePageProvider/hoc';
 
 function LoginScreen() {
   // eslint-disable-next-line react/jsx-filename-extension
