@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable object-curly-newline */
 import React from 'react';
 import styled from 'styled-components';
@@ -21,7 +22,13 @@ Input.defaultProps = {
   variant: 'paragraph1',
 };
 
-export default function TextField({ placeholder, name, onChange, value }) {
+export default function TextField({
+  placeholder,
+  name,
+  onChange,
+  value,
+  ...props
+}) {
   return (
     // eslint-disable-next-line react/jsx-filename-extension
     <InputWrapper>
@@ -31,6 +38,7 @@ export default function TextField({ placeholder, name, onChange, value }) {
         name={name}
         onChange={onChange}
         value={value}
+        {...props}
       />
     </InputWrapper>
   );
