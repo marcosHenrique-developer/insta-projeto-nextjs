@@ -1,4 +1,4 @@
-///<reference types="cypress" />
+/// <reference types="cypress" />
 
 describe('/pages/app/login/', () => {
   // it === test que estamos fazendo
