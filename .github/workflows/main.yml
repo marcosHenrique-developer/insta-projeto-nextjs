@@ -58,7 +58,7 @@ jobs:
         run: npm run --prefer-offline
 
       - name: Run Unit Tests
-        run: npm test
+        run: npm run test
   integration_tests:
     name: Integration Tests
     runs-on: ubuntu-latest # The type of runner that the job will run on
