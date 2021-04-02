@@ -55,10 +55,10 @@ jobs:
 
       # Commands that will run:
       - name: Install Packages
-        run: yarn --prefer-offline
+        run: npm run --prefer-offline
 
       - name: Run Unit Tests
-        run: yarn test
+        run: npm test
   integration_tests:
     name: Integration Tests
     runs-on: ubuntu-latest # The type of runner that the job will run on
@@ -79,7 +79,7 @@ jobs:
 
       # Commands that will run:
       - name: Install Packages
-        run: yarn --prefer-offline
+        run: npm run --prefer-offline
 
       - name: Run Integration Tests
-        run: yarn test:integration:build
+        run: npm run test:integration:build
