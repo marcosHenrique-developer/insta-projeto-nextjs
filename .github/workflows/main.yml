@@ -35,7 +35,8 @@ jobs:
         run: npm install
       - name: Check EsLint
         run: npm run lint
-  unit_tests:
+  
+         unit_tests:
     name: Unit Tests
     runs-on: ubuntu-latest # The type of runner that the job will run on
     steps: # Steps represent a sequence of tasks that will be executed as part of the job
@@ -55,10 +56,10 @@ jobs:
 
       # Commands that will run:
       - name: Install Packages
-        run: npm run --prefer-offline
+        run: yarn --prefer-offline
 
       - name: Run Unit Tests
-        run: npm run test
+        run: yarn test
   integration_tests:
     name: Integration Tests
     runs-on: ubuntu-latest # The type of runner that the job will run on
@@ -79,7 +80,7 @@ jobs:
 
       # Commands that will run:
       - name: Install Packages
-        run: npm run --prefer-offline
+        run: yarn --prefer-offline
 
       - name: Run Integration Tests
-        run: npm run test:integration:build
+        run: yarn test:integration:build 
