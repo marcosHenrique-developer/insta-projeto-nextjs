@@ -8,28 +8,31 @@ export function useForm({ initialValues, onSubmit, validateSchema }) {
   const [errors, setErrors] = React.useState({});
   const [touched, setTouchedFields] = React.useState({});
 
-  React.useEffect(() => {
-    validateSchema(values)
-      .then(() => {
-        setIsFormDisabled(false);
-        setErrors({});
-      })
-      .catch((err) => {
-        const formatedErrors = err.inner.reduce(
-          (errorObjectAcc, currentError) => {
-            const fieldName = currentError.path;
-            const errorMessage = currentError.message;
+  async function validateValues(currentValues) {
+    try {
+      await validateSchema(currentValues);
+      setErrors({});
+      setIsFormDisabled(false);
+    } catch (err) {
+      const formatedErrors = err.inner.reduce(
+        (errorObjectAcc, currentError) => {
+          const fieldName = currentError.path;
+          const errorMessage = currentError.message;
 
-            return {
-              ...errorObjectAcc,
-              [fieldName]: errorMessage,
-            };
-          },
-          {},
-        );
-        setErrors(formatedErrors);
-        setIsFormDisabled(true);
-      });
+          return {
+            ...errorObjectAcc,
+            [fieldName]: errorMessage,
+          };
+        },
+        {},
+      );
+      setErrors(formatedErrors);
+      setIsFormDisabled(true);
+    }
+  }
+
+  React.useEffect(() => {
+    validateValues(values);
   }, [values]);
 
   return {
@@ -49,6 +52,7 @@ export function useForm({ initialValues, onSubmit, validateSchema }) {
     },
     // Validação do Form
     isFormDisabled,
+    setIsFormDisabled,
     errors,
     touched,
     handleBlur(event) {
