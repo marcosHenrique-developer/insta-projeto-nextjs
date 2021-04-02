@@ -43,6 +43,7 @@ export const loginService = {
       if (!hasToken) {
         throw new Error('Failed to login');
       }
+
       const dayInSeconds = 86400;
       // save token
       setCookieModule(null, 'APP_TOKEN', token, {
