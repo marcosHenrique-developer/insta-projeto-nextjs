@@ -14,7 +14,7 @@
     "test:integration:open": "cypress open",
     "test:integration": "cypress run --headless",
     "test:integration:build": "start-server-and-test build/start http-get://localhost:3000 test:integration",
-    "build/start": "yarn build && yarn start"
+    "build/start": "npm run build && npm run start"
   },
   "dependencies": {
     "@crello/react-lottie": "^0.0.11",
